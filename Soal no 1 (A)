@@ -1,0 +1,21 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Konstanta pegas
+k = 60  # N/m
+
+# Rentang posisi x
+x_awal = 0  # meter
+x_akhir = 0.5  # meter
+dx = 0.02  # meter
+
+# Menghitung posisi x
+x_nilai = np.arange(x_awal, x_akhir + dx, dx)
+
+# Menghitung gaya F(x) berdasarkan hukum Hooke
+F_nilai = k * x_nilai
+
+# Menampilkan hasil perhitungan
+print("Posisi x (m)\tGaya F(x) (N)")
+for x, F in zip(x_nilai, F_nilai):
+    print(f"{x:.2f}\t\t{F:.2f}")
