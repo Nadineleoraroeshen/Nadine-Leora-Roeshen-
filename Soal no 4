@@ -1,0 +1,33 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Fungsi gaya tak konstan
+# F(x) = 2x^2 + 4x + 2
+
+def gaya(x):
+    return 2 * x**2 + 4 * x + 2
+
+# Rentang perpindahan
+x_start = 0  # meter
+x_end = 30  # meter
+
+# Membuat array posisi
+x_values = np.linspace(x_start, x_end, num=500)
+
+# Menghitung gaya pada setiap posisi
+F_values = gaya(x_values)
+
+# Menampilkan hasil perhitungan
+print("Posisi (m)\tGaya (N)")
+for x, F in zip(x_values, F_values):
+    print(f"{x:.2f}\t\t{F:.2f}")
+
+# Visualisasi grafik
+plt.figure(figsize=(10, 6))
+plt.plot(x_values, F_values, color='b', label='F(x) = 2x^2 + 4x + 2')
+plt.title('Grafik Gaya Tak Konstan terhadap Posisi', fontsize=14)
+plt.xlabel('Posisi (meter)', fontsize=12)
+plt.ylabel('Gaya (Newton)', fontsize=12)
+plt.grid(True, linestyle='--', alpha=0.7)
+plt.legend(fontsize=12)
+plt.show()
