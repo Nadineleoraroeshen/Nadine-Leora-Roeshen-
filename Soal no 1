@@ -1,0 +1,26 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Konstanta pegas
+k = 60  # N/m
+
+# Rentang posisi x
+x_awal = 0  # meter
+x_akhir = 0.5  # meter
+dx = 0.02  # meter
+
+# Menghitung posisi x
+x_nilai = np.arange(x_awal, x_akhir + dx, dx)
+
+# Menghitung gaya F(x) berdasarkan hukum Hooke
+F_nilai = k * x_nilai
+
+# Visualisasi grafik
+plt.figure(figsize=(8, 6))
+plt.plot(x_nilai, F_nilai, marker='o', linestyle='-', color='b', label='F(x) = kx')
+plt.title('Grafik Gaya F(x) terhadap Posisi x pada Pegas', fontsize=14)
+plt.xlabel('Posisi x (meter)', fontsize=12)
+plt.ylabel('Gaya F(x) (Newton)', fontsize=12)
+plt.grid(True, linestyle='--', alpha=0.7)
+plt.legend(fontsize=12)
+plt.show()
