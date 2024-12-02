@@ -1,0 +1,38 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Parameter gerak vertikal
+v0 = 50  # kecepatan awal (m/s)
+g = 9.8  # percepatan gravitasi (m/s^2)
+
+# Waktu untuk mencapai tinggi maksimum
+t_maks = v0 / g
+
+# Waktu total untuk analisis
+t_total = 2 * t_maks
+
+def tinggi(t):
+    return v0 * t - 0.5 * g * t**2
+
+# Rentang waktu
+waktu = np.linspace(0, t_total, num=500)
+
+# Menghitung tinggi benda
+ketinggian = tinggi(waktu)
+
+# Menampilkan hasil perhitungan
+print("Waktu (s)\tKetinggian (m)")
+for t, h in zip(waktu, ketinggian):
+    if h >= 0:  # Tampilkan hanya untuk ketinggian non-negatif
+        print(f"{t:.2f}\t\t{h:.2f}")
+
+# Visualisasi grafik
+plt.figure(figsize=(10, 6))
+plt.plot(waktu, ketinggian, color='g', label='Gerak Vertikal')
+plt.title('Grafik Gerak Vertikal Benda', fontsize=14)
+plt.xlabel('Waktu (detik)', fontsize=12)
+plt.ylabel('Ketinggian (meter)', fontsize=12)
+plt.axhline(0, color='black', linewidth=0.8, linestyle='--')  # garis dasar
+plt.grid(True, linestyle='--', alpha=0.7)
+plt.legend(fontsize=12)
+plt.show()
