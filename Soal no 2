@@ -1,0 +1,37 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Parameter gerak harmonis sederhana
+T = 10  # Periode (detik)
+A = 0.05  # Amplitudo (meter)
+
+# Frekuensi sudut
+omega = 2 * np.pi / T
+
+# Fungsi posisi sebagai fungsi waktu
+def posisi(t):
+    return A * np.cos(omega * t)
+
+# Rentang waktu
+t_awal = 0  # detik
+t_akhir = 50  # detik
+dt = 0.1  # langkah waktu (detik)
+
+# Menghitung nilai waktu dan posisi
+waktu = np.arange(t_awal, t_akhir + dt, dt)
+posisi_benda = posisi(waktu)
+
+# Menampilkan hasil perhitungan
+print("Waktu (s)\tPosisi (m)")
+for t, x in zip(waktu, posisi_benda):
+    print(f"{t:.1f}\t\t{x:.4f}")
+
+# Visualisasi grafik
+plt.figure(figsize=(10, 6))
+plt.plot(waktu, posisi_benda, color='r', label='x(t) = A cos(ωt)')
+plt.title('Grafik Posisi terhadap Waktu (Gerak Harmonis Sederhana)', fontsize=14)
+plt.xlabel('Waktu (detik)', fontsize=12)
+plt.ylabel('Posisi (meter)', fontsize=12)
+plt.grid(True, linestyle='--', alpha=0.7)
+plt.legend(fontsize=12)
+plt.show()
